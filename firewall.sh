@@ -2,8 +2,8 @@
 #
 # firewall.sh
 
-IPT=/usr/sbin/iptables
-SERVICE=/usr/sbin/service
+IPT=iptables
+SERVICE=service
 
 # Réseau local
 IFACE_LAN=enp0s8
