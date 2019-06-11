@@ -3,7 +3,6 @@
 # firewall.sh
 
 IPT="iptables"
-SERVICE="service"
 
 # Réseau local
 IFACE_LAN=enp0s8
@@ -55,4 +54,4 @@ sudo $IPT -A INPUT -m state --state ESTABLISHED -j ACCEPT
 sudo $IPT -A INPUT -p tcp -i $IFACE_LAN --dport 42 -j ACCEPT
 
 # Enregistrer la configuration
-sudo $SERVICE iptables save
+sudo service iptables save
