@@ -54,4 +54,5 @@ sudo $IPT -A INPUT -m state --state ESTABLISHED -j ACCEPT
 sudo $IPT -A INPUT -p tcp -i $IFACE_LAN --dport 42 -j ACCEPT
 
 # Enregistrer la configuration
-sudo service iptables save
+#sudo service iptables save
+/sbin/iptables-save
