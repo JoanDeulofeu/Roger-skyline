@@ -15,9 +15,9 @@ sudo $IPT -t filter -F
 sudo $IPT -t filter -X
 
 # Politique par défaut
-sudo $IPT -P INPUT REJECT
-sudo $IPT -P FORWARD REJECT
-sudo $IPT -P OUTPUT REJECT
+sudo $IPT -P INPUT DROP
+sudo $IPT -P FORWARD DROP
+sudo $IPT -P OUTPUT DROP
 
 # Protection DDOS
 sudo $IPT -A FORWARD -p tcp --syn -m limit --limit 1/second -j ACCEPT
@@ -34,7 +34,7 @@ sudo $IPT -A INPUT -p tcp -m conntrack --ctstate NEW -m limit --limit 60/s --lim
 sudo $IPT -A INPUT -p tcp -m conntrack --ctstate NEW -j REJECT
 
 ## On flush iptables.
-sudo iptables-restore < /etc/iptables.test.rules
+iptables-restore < /etc/iptables.test.rules
 sudo $IPT -F
 
 ## On supprime toutes les chaînes utilisateurs.
