@@ -129,7 +129,6 @@ sudo $IPT -t filter -A FORWARD -j LOG --log-prefix "Forward "
 
 # Faire confiance à nous-mêmes ;o)
 sudo $IPT -A INPUT -i lo -j ACCEPT
-sudo $IPT -A OUTPUT -i lo -j ACCEPT
 
 # Ping
 sudo $IPT -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
