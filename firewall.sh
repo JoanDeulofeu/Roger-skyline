@@ -23,15 +23,15 @@ sudo $IPT -P OUTPUT DROP
 sudo $IPT -A FORWARD -p tcp --syn -m limit --limit 1/second -j ACCEPT
 
 ### 8: Limit connections per source IP ###
-sudo $IPT -A INPUT -p tcp -m connlimit --connlimit-above 111 -j REJECT --reject-with tcp-reset
+sudo $IPT -A INPUT -p tcp -m connlimit --connlimit-above 111 -j DROP --reject-with tcp-reset
 
 ### 9: Limit RST packets ###
 sudo $IPT -A INPUT -p tcp --tcp-flags RST RST -m limit --limit 2/s --limit-burst 2 -j ACCEPT
-sudo $IPT -A INPUT -p tcp --tcp-flags RST RST -j REJECT
+sudo $IPT -A INPUT -p tcp --tcp-flags RST RST -j DROP
 
 ### 10: Limit new TCP connections per second per source IP ###
 sudo $IPT -A INPUT -p tcp -m conntrack --ctstate NEW -m limit --limit 60/s --limit-burst 20 -j ACCEPT
-sudo $IPT -A INPUT -p tcp -m conntrack --ctstate NEW -j REJECT
+sudo $IPT -A INPUT -p tcp -m conntrack --ctstate NEW -j DROP
 
 ## On supprime toutes les chaînes utilisateurs.
 sudo $IPT -X
