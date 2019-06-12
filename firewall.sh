@@ -1,4 +1,4 @@
-sudo $IPT#!/bin/sh
+#!/bin/sh
 #
 # firewall.sh
 
