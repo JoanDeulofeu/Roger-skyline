@@ -112,12 +112,12 @@ sudo $IPT -t filter -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEP
 sudo $IPT -t filter -A OUTPUT -m conntrack ! --ctstate INVALID -j ACCEPT
 
 ## On accepte ssh
-sudo $IPT -t filter -A INPUT -p tcp -m state --state NEW --dport 22 -j LOG --log-prefix "Un Script Kiddies Test SSH "
-sudo $IPT -t filter -A INPUT -p tcp --dport 22 -m recent --rcheck --seconds 160 --hitcount 2 --name SSH -j LOG --log-prefix "Script Kiddies Attaque SSH "
-sudo $IPT -t filter -A INPUT -p tcp --dport 22 -m recent --update --seconds 160 --hitcount 2 --name SSH -j DROP
-sudo $IPT -t filter -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set --name SSH -j ACCEPT
+sudo $IPT -t filter -A INPUT -p tcp -m state --state NEW --dport 42 -j LOG --log-prefix "Un Script Kiddies Test SSH "
+sudo $IPT -t filter -A INPUT -p tcp --dport 42 -m recent --rcheck --seconds 160 --hitcount 2 --name SSH -j LOG --log-prefix "Script Kiddies Attaque SSH "
+sudo $IPT -t filter -A INPUT -p tcp --dport 42 -m recent --update --seconds 160 --hitcount 2 --name SSH -j DROP
+sudo $IPT -t filter -A INPUT -p tcp --dport 42 -m state --state NEW -m recent --set --name SSH -j ACCEPT
 
-#sudo $IPT -t filter -A INPUT -p tcp --dport 22 -j ACCEPT
+#sudo $IPT -t filter -A INPUT -p tcp --dport 42 -j ACCEPT
 
 ## On accepte la boucle locale en entrée.
 sudo $IPT -t filter -I INPUT -i lo -j ACCEPT
