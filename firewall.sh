@@ -33,10 +33,6 @@ sudo $IPT -A INPUT -p tcp --tcp-flags RST RST -j REJECT
 sudo $IPT -A INPUT -p tcp -m conntrack --ctstate NEW -m limit --limit 60/s --limit-burst 20 -j ACCEPT
 sudo $IPT -A INPUT -p tcp -m conntrack --ctstate NEW -j REJECT
 
-## On flush iptables.
-iptables-restore < /etc/iptables.test.rules
-sudo $IPT -F
-
 ## On supprime toutes les chaînes utilisateurs.
 sudo $IPT -X
 
