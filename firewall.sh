@@ -36,15 +36,6 @@ sudo $IPT -A INPUT -p tcp -m conntrack --ctstate NEW -j DROP
 ## On supprime toutes les chaînes utilisateurs.
 sudo $IPT -X
 
-## On drop tout le trafic entrant.
-sudo $IPT -t filter -P INPUT DROP
-
-## On drop tout le trafic sortant.
-sudo $IPT -t filter -P OUTPUT DROP
-
-## On drop le forward.
-sudo $IPT -t filter -P FORWARD DROP
-
 ## NULL-SCAN
 sudo $IPT -t filter -A INPUT -p tcp --tcp-flags ALL NONE -j LOG \
 --log-prefix "IPTABLES NULL-SCAN:"
