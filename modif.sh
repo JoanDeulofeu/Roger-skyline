@@ -6,7 +6,7 @@
 PATH_FILE="/etc/"
 NAME_FILE="crontab"
 NOM_FICHIER="/etc/crontab"
-MAIL_ADMIN="root"
+MAIL_ADMIN="root@roger"
 BOOL_MODIF=$(find $PATH_FILE -name $NAME_FILE -mtime -1 -print)
 
 
